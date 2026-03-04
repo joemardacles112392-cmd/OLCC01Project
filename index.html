@@ -1,0 +1,605 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discover Dota</title>
+
+<style>
+
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(to right,#000000,#3b1200);
+    color:white;
+}
+
+
+nav{
+    background:#2a0d00;
+    padding:15px 50px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+nav ul{
+    list-style:none;
+    display:flex;
+    gap:30px;
+}
+
+nav a{
+    text-decoration:none;
+    color:white;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+nav a:hover{
+    color:#ff4d00;
+}
+
+
+.hero{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:80px 10%;
+    background:linear-gradient(to right,#000000,#3b1200);
+    flex-wrap:wrap;
+}
+
+.hero img{
+    width:350px;
+}
+
+.hero-text{
+    margin-left:60px;
+    max-width:500px;
+}
+
+.hero-text h1{
+    font-size:48px;
+    margin-bottom:20px;
+}
+
+.hero-text p{
+    font-size:18px;
+    line-height:1.6;
+    margin-bottom:30px;
+}
+
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: linear-gradient(to right,#000000,#3b1200);
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#ff2200;
+}
+
+
+.hero-section{
+    padding:60px 10%;
+}
+
+.hero-container{
+    display:flex;
+    gap:30px;
+    margin-bottom:60px;
+    flex-wrap:wrap;
+}
+
+.hero-container img{
+    width:300px;
+}
+
+.hero-info{
+    max-width:500px;
+}
+
+.hero-info h3{
+    color:cyan;
+    margin-top:15px;
+}
+
+
+.newsletter{
+    text-align:center;
+    padding:60px 10%;
+    background:linear-gradient(to right,#000000,#3b1200);
+}
+
+.newsletter h2{
+    color:#ff4d00;
+    margin-bottom:40px;
+}
+
+.form-row{
+    margin-top:20px;
+}
+
+input{
+    padding:10px;
+    margin:10px;
+    border:none;
+    border-radius:5px;
+}
+
+
+footer{
+    text-align:center;
+    padding:30px;
+    background:#2a0d00;
+    margin-top:40px;
+}
+
+
+@media(max-width:900px){
+    .hero{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-text{
+        margin-left:0;
+        margin-top:30px;
+    }
+
+    .hero-container{
+        flex-direction:column;
+        align-items:center;
+        text-align:center;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+
+<nav>
+    <div style="color:pink; font-weight:bold;">Home</div>
+    <ul>
+    	<li><a href="about.html">About</a></li>
+        <li><a href="armory.html">Armory</a></li>
+        <li><a href="Items.html">Items</a></li>
+        <li><a href="strategy.html">Maps</a></li>
+        <li><a href="maps.html">Strategy</a></li>
+		
+    </ul>
+</nav>
+
+
+<section class="hero">
+    <img src="https://custom-doodle.com/wp-content/uploads/doodle/dota-2-logo/dota-2-logo-doodle.gif">
+
+    <div class="hero-text">
+        <h1>Discover Dota</h1>
+        <p>
+            Explore the immersive world of Dota 2, where strategy meets action 
+            in epic battles. Join the adventure and experience the thrill of intense gameplay.
+        </p>
+        <a href="steam://rungameid/570" class="btn" id="playBtn">Play Now</a><br>
+<style>
+    body {
+        background: black;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        text-align: center;
+        padding: 50px;
+    }
+
+    .btn {
+        padding: 10px 20px;
+        background-color: #1b2838;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+        margin-top: 20px;
+    }
+
+    .btn:hover {
+        background-color: #ff2200;
+    }
+</style>
+</head>
+<body>
+
+
+<button id="musicBtn" class="btn">Turn Music OFF</button>
+
+
+<div id="player"></div>
+
+<script src="https://www.youtube.com/iframe_api"></script>
+<script>
+let player;
+let isPlaying = true;
+
+
+function onYouTubeIframeAPIReady() {
+    player = new YT.Player('player', {
+        height: '0',
+        width: '0',
+        videoId: '6p_a1SYs6Gs',
+        playerVars: {
+            autoplay: 1,
+            loop: 1,
+            playlist: '6p_a1SYs6Gs',
+            controls: 0,
+            disablekb: 1,
+            modestbranding: 1
+        },
+        events: {
+            'onReady': onPlayerReady
+        }
+    });
+}
+
+
+function onPlayerReady(event) {
+    event.target.playVideo();
+}
+
+
+document.getElementById("musicBtn").addEventListener("click", function() {
+    if (isPlaying) {
+        player.pauseVideo();
+        this.textContent = "Turn Music ON";
+        isPlaying = false;
+    } else {
+        player.playVideo();
+        this.textContent = "Turn Music OFF";
+        isPlaying = true;
+    }
+});
+</script>
+</style>
+        <br><br>
+     
+        
+
+    </div>
+</section>
+
+
+<section class="hero-section">
+<style>
+        body {
+            background:linear-gradient(to right,#000000,#3b1200);
+            }
+        </style>
+
+<h1 style="text-align:center;">Heroes, Abilities and Items</h1>
+<br><br>
+
+
+
+<h2>Anti-Mage</h2>
+<p>A highly mobile agility carry in Dota 2 who specializes in hunting down spellcasters and draining their mana. With abilities like Blink and Mana Break, he can quickly chase enemies while burning their mana with every attack. Anti-Mage becomes extremely powerful in the late game, using Mana Void to deal massive damage based on his enemies’ missing mana.</p> <br>
+
+<div class="hero-container">
+
+    <img src="https://i.imgur.com/lBaIIEP.gif" alt="animated image" width="300" height="300">
+
+    <div class="hero-info">
+        <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Mana Break</li>
+            <li>Blink</li>
+            <li>Counterspell</li>
+            <li>Mana Void (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Battle Fury</li>
+            <li>Manta Style</li>
+            <li>Black King Bar</li>
+        </ul>
+    </div>
+
+</div>
+<br><br>
+
+<h2 style="color:white;">Death Prophet</h2><br>
+<p>An intelligence hero in Dota 2 known for her powerful spirit-based abilities and strong pushing potential. She uses Crypt Swarm and Silence to damage and control enemies during team fights.
+Her ultimate, Exorcism, summons vengeful spirits that deal massive damage to heroes and buildings, making her a dominant force in mid-game battles.</p><br>
+
+<div class="hero-container">
+
+    
+    <img src="https://i.imgur.com/RKfeIu1.gif" alt="animated image" width="300" height="300">
+
+   
+    <div class="hero-info">
+        <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Crypt Swarm</li>
+            <li>Silence</li>
+            <li>Spirit Siphon</li>
+            <li>Exorcism (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Eul's Scepter of Divinity</li>
+            <li>Shiva's Guard</li>
+            <li>Black King Bar</li>
+        </ul>
+    </div>
+
+</div><br><br>
+<h2 style="color:white;">Pudge</h2><br>
+<p>A strength hero in Dota 2 famous for his ability to control the battlefield with his Meat Hook and Rot.
+He excels at catching enemies off guard, pulling them into deadly situations with precise positioning.
+Pudge’s ultimate, Dismember, immobilizes and damages a target, making him a terrifying threat in both solo kills and team fights.</p><br>
+
+<div class="hero-container">
+
+    <
+    <img src="https://videos.cults3d.com/049C3EdwI13bUDKKm9NT8cSCYCU=/516x516/filters:no_upscale()/https://fbi.cults3d.com/uploaders/28051711/illustration-file/1d8ecf1c-4d7d-48af-8137-770bf995bab2/dota2_PwNtE5Xlq5.gif" alt="animated image" width="300" height="300">
+        
+
+    <
+    <div class="hero-info">
+       <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Meat Hook</li>
+            <li>Rot</li>
+            <li>Flesh Heap</li>
+            <li>Dismember (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Blink Dagger</li>
+            <li>Aether Lens</li>
+            <li>Aghanim's Scepter</li>
+        </ul>
+    </div>
+</div><br><br>
+<h2 style="color:white;">Faceless Void</h2><br>
+<a>An agility hero in Dota 2 who manipulates time to gain an advantage in battles. His Time Walk allows him to rewind damage taken, while Time Lock gives him a chance to stun enemies with each attack. His ultimate, Chronosphere, freezes all units in a large area, enabling devastating team fights when timed correctly.</a><br>
+<div class="hero-container">
+
+
+    <img src="https://i.imgur.com/lc8EUCc.gif" alt="animated image" width="300" height="300">
+
+ 
+    <div class="hero-info">
+        <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Time Walk</li>
+            <li>Time Dilation</li>
+            <li>Time Lock</li>
+            <li>Chronosphere (Ultimate)</li>
+        </ul>
+
+       <h3 style="color: cyan;">Core Items:</h3>
+
+        <ul>
+            <li>Mask of Madness</li>
+            <li>Black King Bar</li>
+            <li>Mjollnir</li>
+        </ul>
+    </div>
+
+</div><br>
+<h2 style="color:white;">Night Stalker</h2><br>
+<p>A strength hero in Dota 2 known for his dominance during nighttime. 
+He thrives in darkness, gaining increased movement speed, attack speed, and vision control. 
+Night Stalker’s abilities allow him to silence enemies, chase down fleeing targets, and turn the tide of battles when night falls.</p><br>
+
+<div class="hero-container">
+
+  
+    <img src="https://i.imgur.com/usu9UyS.gif" alt="animated image" width="300" height="300">
+
+   
+    <div class="hero-info">
+       <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Void</li>
+            <li>Crippling Fear</li>
+            <li>Hunter in the Night</li>
+            <li>Dark Ascension (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Black King Bar</li>
+            <li>Aghanim's Scepter</li>
+            <li>Assault Cuirass</li>
+        </ul>
+    </div>
+
+</div><br>
+<h2 style="color:white;">Abaddon</h2><br>
+<p>Abaddon is a durable, melee strength hero in Dota 2, frequently played as a support or utility offlaner. He specializes in shielding 
+    teammates and sustaining himself through damage. His abilities Mist Coil and Aphotic Shield offer low cooldown healing and damage absorption, 
+    making him excellent at keeping allies alive during intense fights. His ultimate, Borrowed Time, acts as a panic button that converts incoming damage into healing, allowing him to dive deep into enemy territory.</p><br>
+
+<div class="hero-container">
+
+    <img src="https://i.imgur.com/joi1trv.gif" alt="animated image" width="300" height="300">
+
+    <div class="hero-info">
+        <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Mist Coil</li>
+            <li>Aphotic Shield</li>
+            <li>Curse of Avernus</li>
+            <li>Borrowed Time (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Aghanim's Scepter</li>
+            <li>Harpoon</li>
+            <li>Radiance</li>
+        </ul>
+    </div>
+
+</div><br>
+
+</div><br>
+
+<h2 style="color:white;">Invoker</h2><br>
+<a>A versatile intelligence hero in Dota 2 who commands the elements through his unique ability to invoke spells. By combining Quas, Wex, and Exort, Invoker can unleash a wide array of powerful abilities, making him one of the most complex and rewarding heroes to master.</a><br>
+<div class="hero-container">
+
+    <img src="https://i.imgur.com/NiGkcEO.gif" alt="animated image" width="300" height="300">
+
+    <div class="hero-info">
+        <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Quas</li>
+            <li>Wex</li>
+            <li>Exort</li>
+            <li>Invoke (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Aghanim's Scepter</li>
+            <li>Black King Bar</li>
+            <li>Scythe of Vyse</li>
+        </ul>
+    </div>
+
+</div><br>
+<h2 style="color:white;">Zeus</h2><br>
+<p>Zeus is a powerful intelligence hero in Dota 2, known as the Lord of Olympus. He excels at dealing massive magical damage from a distance, punishing enemies with his lightning-based abilities. His global ultimate, Thundergod's Wrath, allows him to strike all enemy heroes no matter where they are on the map, making him a constant threat throughout the game.</p><br>
+
+<div class="hero-container">
+
+    <img src="https://i.redd.it/2h4eu9kjq33b1.gif" alt="animated image" width="300" height="300">
+
+    <div class="hero-info">
+        <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Arc Lightning</li>
+            <li>Lightning Bolt</li>
+            <li>Static Field</li>
+            <li>Thundergod's Wrath (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Aether Lens</li>
+            <li>Veil of Discord</li>
+            <li>Refresher Orb</li>
+        </ul>
+    </div>
+
+</div><br>
+<h2 style="color:white;">Leshrac</h2><br>
+<p>Leshrac is a ranged intelligence hero in Dota 2, known as the Tormented Soul. He excels at dealing continuous magical and mixed damage through his powerful area-of-effect abilities. With strong pushing potential and devastating team fight presence, Leshrac can quickly overwhelm enemies when supported by mana-sustaining items.</p><br>
+
+<div class="hero-container">
+
+    <img src="https://i.redd.it/nmr6s47mxete1.gif" alt="animated image" width="300" height="300">
+
+    <div class="hero-info">
+        <h3 style="color: cyan;">Abilities:</h3>
+        <ul>
+            <li>Split Earth</li>
+            <li>Diabolic Edict</li>
+            <li>Lightning Storm</li>
+            <li>Pulse Nova (Ultimate)</li>
+        </ul>
+
+        <h3 style="color: cyan;">Core Items:</h3>
+        <ul>
+            <li>Bloodstone</li>
+            <li>Black King Bar</li>
+            <li>Boots of Travel</li>
+        </ul>
+    </div>
+
+</div>
+</section>
+<section class="newsletter">
+    <h2>Learn the basics of Dota gaming and experience the thrill and excitement of the game!</h2>
+
+    <img src="https://i.makeagif.com/media/4-06-2018/WiqHTf.gif" width="800" style="max-width:100%;">
+
+    <div class="form-row">
+        <input type="text" id="fname" placeholder="First Name *">
+        <input type="text" id="lname" placeholder="Last Name *">
+        <input type="email" id="email" placeholder="Email *">
+        <br>
+        <button class="btn" onclick="submitForm()">Submit</button>
+    </div>
+</section>
+
+
+<footer>
+    <h4>
+        Joemar D Dacles<br><br>
+        OLCA122E034<br>
+        OLCC01
+    </h4>
+</footer>
+
+
+<script>
+
+/
+document.getElementById("playBtn").addEventListener("click", function(event){
+    let confirmPlay = confirm("Launch Dota 2?");
+    if(!confirmPlay){
+        event.preventDefault();
+    }
+});
+
+
+function submitForm(){
+    let fname = document.getElementById("fname").value;
+    let lname = document.getElementById("lname").value;
+    let email = document.getElementById("email").value;
+
+    if(fname === "Joemar" || lname === "Dacles" || email === "joemardacles112392@gmail.com"){
+        alert("Please fill out all fields!");
+    } else {
+        alert("Thank you for signing up, " + + "!");
+    }
+}
+
+
+document.querySelectorAll("a").forEach(anchor => {
+    anchor.addEventListener("click", function(e) {
+        if(this.hash !== ""){
+            e.preventDefault();
+            document.querySelector(this.hash).scrollIntoView({
+                behavior: "smooth"
+            });
+        }
+    });
+});
+
+
+</body>
+</html>
